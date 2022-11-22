@@ -68,6 +68,10 @@ public class Usuario implements Serializable {
     @Column(name = "altura", length = 50)
     private String altura;
 
+    @JsonProperty(value = "peso")
+    @Column(name = "peso", length = 50)
+    private String peso;
+
     @JsonProperty(value = "estado_civil")
     @Column(name = "estado_civil", length = 50)
     private String estadoCivil;
