@@ -48,7 +48,7 @@ public class Doacao {
 
     @JsonProperty(value="qnt_sangue")
     @Column(name = "qnt_sangue", length = 50, nullable = false)
-    private Double qntSangue;
+    private String qntSangue;
 
     
     @JsonProperty(value="sentimento")
