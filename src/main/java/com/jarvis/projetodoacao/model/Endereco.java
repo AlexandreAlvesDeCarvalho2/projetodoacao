@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,5 +41,10 @@ public class Endereco {
 
     @Column(name = "estado", length = 50, nullable = false)
     private String estado;
+
+    // ==================== relações ======================
+    @JsonProperty(value = "id_usuario")
+    @Column(name = "id_usuario", length = 50, nullable = false)
+    private Long idUsuario;
     
 }

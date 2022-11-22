@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jarvis.projetodoacao.model.Endereco;
 import com.jarvis.projetodoacao.repository.EnderecoRepository;
+import com.jarvis.projetodoacao.service.EnderecoService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,6 +36,9 @@ public class EnderecoController {
 
     @Autowired
     EnderecoRepository enderecoRepository;
+
+    @Autowired
+    EnderecoService enderecoService;
 
     // @ApiOperation(value = "Buscar todos os enderecos")
     // @GetMapping(value = "/enderecos")
@@ -53,8 +57,8 @@ public class EnderecoController {
     @ApiOperation(value = "Inserir novo endereco")
     @PostMapping(value = "/enderecos")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Endereco createUsuario(@RequestBody Endereco endereco) {
-        return enderecoRepository.save(endereco);
+    public Endereco createUsuario(@RequestBody Endereco endereco) throws Exception {
+        return enderecoService.validaInsertEndereco(endereco);
     }
 
     @ApiOperation(value = "Atualizar dados do endereco")
@@ -70,6 +74,7 @@ public class EnderecoController {
                     record.setIdDoacao(contact.getIdDoacao());
                     record.setLogradouro(contact.getLogradouro());
                     record.setEstado(contact.getBairro());
+                    record.setIdUsuario(contact.getIdUsuario());
                     Endereco updated = enderecoRepository.saveAndFlush(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());

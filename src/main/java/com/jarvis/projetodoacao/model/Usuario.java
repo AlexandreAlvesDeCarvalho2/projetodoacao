@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
     
     @Email    
     @JsonProperty(value = "email")
-    @Column(name = "email", unique = true, length = 50)
+    @Column(name = "email", length = 50)
     private String email;
 
     @JsonProperty(value = "senha")
@@ -67,10 +67,6 @@ public class Usuario implements Serializable {
     @JsonProperty(value = "altura")
     @Column(name = "altura", length = 50)
     private String altura;
-
-    @JsonProperty(value = "peso")
-    @Column(name = "peso", length = 50)
-    private String peso;
 
     @JsonProperty(value = "estado_civil")
     @Column(name = "estado_civil", length = 50)
